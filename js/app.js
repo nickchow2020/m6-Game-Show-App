@@ -46,7 +46,7 @@ function addPhraseToDisplay(arr){
         let li = document.createElement("li")
         li.textContent = arr[i];
         if(li.textContent === " "){
-            li.className = "";
+            li.className = "space";
         }else{
             li.className = "letter";
         }
