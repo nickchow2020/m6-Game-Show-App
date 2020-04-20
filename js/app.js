@@ -1,4 +1,6 @@
-// adding needed variables;
+/*
+ adding needed variables for the project;
+ */
 const keyboradSec = document.getElementById("qwerty");
 const phraseDisplay = document.getElementById("phrase");
 const btnReset = document.querySelector(".btn_reset");
@@ -14,17 +16,18 @@ let phrases = [
     "riding motorcycle",
  ];
 
-//  events handler to hide the star screem overlay;
+/*
+ events handler to hide the star screem overlay;
+*/
 btnReset.addEventListener("click",()=>{
     overlay.style.display = "none";
 })
 
 
-// create getRandomPhraseAsArray function 
-// let randomIndex = Math.floor(Math.random() * phrases.length);
-// let randomPhrase = phrases[randomIndex];
-// let phraseArray = randomPhrase.split("");
-// console.log(phraseArray);
+/*
+ create getRandomPhraseAsArray function,
+ convert random phrases into letter of array.
+*/
 function getRandomPhraseAsArray(arr){
     let randomIndex = Math.floor(Math.random() * arr.length);
     let randomPhrase = arr[randomIndex];
@@ -32,17 +35,11 @@ function getRandomPhraseAsArray(arr){
     return phraseArray;
 }
 
-// function to display list characters
-// for(let i = 0; i < arrayPhrases.length; i ++){
-//      let li = document.createElement("li");
-//      li.textContent = arrayPhrases[i];
-//      if(li.textContent === " "){
-//          li.className = "";
-//      }else{
-//         li.className = "letter";
-//      }
-//      phraseDisplay.appendChild(li);
-// }
+/*
+function to display list characters into Ul
+and add class name of letter to each letter
+*/
+
 function addPhraseToDisplay(arr){
     let ul = phraseDisplay.querySelector("ul")
     for(let i = 0; i < arr.length; i ++){
@@ -62,23 +59,20 @@ addPhraseToDisplay(arrayPhrases);
 
 
 
-// Andding Eevent Listerner to the keyboard on screem
+/*
+Eevents Listerner to the keyboard on screem
+and every function we need to complete this project
+*/
 keyboradSec.addEventListener("click",(e)=>{
     if(e.target.tagName === "BUTTON"){
         e.target.classList.add("chosen");
         e.target.disabled = true;
         let choseLetter = e.target.textContent;
         let letters = document.querySelectorAll(".letter");
-        // let letterFound;
-        // let letter = document.querySelectorAll(".letter");
-        // let choseLetter = e.target.textContent;
-        // for(let i = 0; i < letter.length; i ++){
-        //     if(choseLetter === letter[i].textContent){
-        //       letter[i].classList.add("show");
-        //       letterFound = letter[i].textContent;
-        //     }
-        // }
-//function of checkletter to check and add class show to the list
+/*
+function of checkletter to check and add class show to the list
+and return the guessFound letter
+*/
         function checkLetter(arr){
             let letterFound;
             for(let i = 0; i < letters.length; i ++){
@@ -105,24 +99,6 @@ and add  a counter by one with the letter is undefined;
 Adding a statement the is going to check the states of the user guess,if the user guess right,or
 the guesser loose all of it's five points.that is checkwin function.
 */
-    // let classShow = document.querySelectorAll(".show");
-    // let letterLength = letters.length;
-    // let showLenth = classShow.length;
-
-    // if(letterLength === showLenth){
-    //     overlay.classList.add("win");
-    //     overlay.style.display = "";
-    //     title.textContent = "You Win The Guess!! Yeah!!!";
-    //     btnReset.setAttribute("onClick","window.location.reload()")
-    //     btnReset.textContent = "Start Over";
-    // }else if(geussCount >= 5){
-    //     overlay.classList.add("lose");
-    //     overlay.style.display = "";
-    //     title.textContent = "O,Sorry,Try It One More Time..";
-    //     btnReset.setAttribute("onClick","window.location.reload()")
-    //     btnReset.textContent = "Try One More Time";
-    // }
-
     function checkWin(arr){
         let classShow = document.querySelectorAll(".show");
         let letterLength = letters.length;
@@ -133,12 +109,14 @@ the guesser loose all of it's five points.that is checkwin function.
             title.textContent = "You Win The Guess!! Yeah!!!";
             btnReset.setAttribute("onClick","window.location.reload()");
             btnReset.textContent = "Start Over";
+            phraseDisplay.style.display = "none";
         }else if(geussCount >= 5){
             arr.classList.add("lose");
             arr.style.display = "";
             title.textContent = "O,Sorry,Try It One More Time..";
-            btnReset.setAttribute("onClick","window.location.reload()");
+            btnReset.setAttribute("onClick","window.location.reload()")
             btnReset.textContent = "Try One More Time";
+            phraseDisplay.style.display = "none";
         }
     }
     checkWin(overlay);
