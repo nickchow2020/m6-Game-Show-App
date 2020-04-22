@@ -89,9 +89,19 @@ and add  a counter by one with the letter is undefined;
 */
         if(checkLetter(choseLetter) === undefined){
             let ol = document.querySelector("ol"); 
-            let li = ol.firstElementChild;
-            ol.removeChild(li);
+            let img = ol.querySelectorAll("img");
             geussCount += 1;
+            if(geussCount === 1){
+                img[0].setAttribute("src","images/lostHeart.png");
+            }else if(geussCount === 2){
+                img[1].setAttribute("src","images/lostHeart.png");
+            }else if(geussCount === 3){
+                img[2].setAttribute("src","images/lostHeart.png");
+            }else if(geussCount === 4){
+                img[3].setAttribute("src","images/lostHeart.png");
+            }else if(geussCount === 5){
+                img[4].setAttribute("src","images/lostHeart.png");
+            }
         }else{
             checkLetter(choseLetter);
         }
